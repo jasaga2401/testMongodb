@@ -11,13 +11,13 @@ Public Class Form1
         Dim client As New MongoClient(connectionString)
 
         ' Access the database
-        Dim database As IMongoDatabase = client.GetDatabase("blog")
+        Dim database As IMongoDatabase = client.GetDatabase("dbcustomer")
 
         ' Access the collection
-        Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("posts")
+        Dim collection As IMongoCollection(Of BsonDocument) = database.GetCollection(Of BsonDocument)("users")
 
         ' Define a filter to search for "title" = "Post Title1"
-        Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of String)("title", "Post Title 1")
+        Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of String)("forename", "Kenny")
 
         ' Execute the query
         Dim documents As List(Of BsonDocument) = collection.Find(filter).ToList()
